@@ -8,14 +8,16 @@
     "email": "",
     "url": ""
   },
-    "scripts": {
-      "api": "place-my-order-api --port 7070",
-      "test": "testee src/test.html --browsers firefox --reporter Spec",
-      "start": "can-serve --proxy http://localhost:7070 --port 8080",
-      "develop": "can-serve --develop --proxy http://localhost:7070 --port 8080",
-      "document": "documentjs",
-      "build": "node build"
-    },
+  "scripts": {
+    "api": "place-my-order-api --port 7070",
+    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "start": "npm-run-parallel api server:production",
+    "server:production": "can-serve --proxy http://localhost:7070 --port 8080",
+    "server:development": "can-serve --proxy http://localhost:7070 --port 8080",
+    "develop": "npm run server:development",
+    "document": "documentjs",
+    "build": "node build"
+  },
   "main": "place-my-order/index.stache!done-autorender",
   "files": [
     "src"
